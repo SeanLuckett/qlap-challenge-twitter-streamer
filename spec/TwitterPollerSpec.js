@@ -1,12 +1,8 @@
 describe("TwitterPoller", function(){
-
   var twit_poll;
+
   beforeEach(function(){
     twit_poll = new TwitterPoller();
-  });
-
-  it("exists", function(){
-    expect(twit_poll).toBeDefined();
   });
 
   describe("has a list", function(){
@@ -41,17 +37,16 @@ describe("TwitterPoller", function(){
     });
   });
 
-  describe("has a search phrase", function(){
-
+  describe("search phrase", function(){
     beforeEach(function(){
       twit_poll.change_search_phrase("A search");
     });
-    it("it stores", function(){
+
+    it("stores the phrase", function(){
       expect(twit_poll.search_phrase).toEqual("A search");
     });
 
-    describe("when it changes:", function(){
-
+    describe("when the phrase changes:", function(){
       it("'nukes' the tweet_list", function(){
         twit_poll.tweet_list.push({'unique': 'tweet'});
         twit_poll.change_search_phrase("A different search");
